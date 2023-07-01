@@ -5,8 +5,14 @@ const port = 3000
 
 
 const log = bunyan.createLogger({ name: 'app' });
-app.all('/', (req, res) => {
-    log.info(req);
+app.all('/', ({ headers, url, body, params, hostname }, res) => {
+    log.info({
+        hostname,
+        url,
+        params,
+        headers,
+        body,
+    });
     res.send('Hello World!')
 })
 
