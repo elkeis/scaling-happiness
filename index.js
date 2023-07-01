@@ -6,7 +6,7 @@ const port = 3000
 
 const log = bunyan.createLogger({ name: 'app' });
 app.all('/', (req, res) => {
-    log(req);
+    log.info(req);
     res.send('Hello World!')
 })
 
