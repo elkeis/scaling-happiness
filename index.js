@@ -1,8 +1,12 @@
 const express = require('express')
+const bunyan = require('bunyan');
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
+
+const log = bunyan.createLogger({ name: 'app' });
+app.all('/', (req, res) => {
+    log(req);
     res.send('Hello World!')
 })
 
